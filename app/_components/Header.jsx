@@ -1,8 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function Header() {
@@ -14,11 +15,15 @@ function Header() {
 
         {isSignedIn ? (
           <div className="flex items-center gap-5">
-            <Button variant="outline">Get Started</Button>
+            <Link href={"/dashboard"}>
+              <Button variant="outline">Dashboard</Button>
+            </Link>
             <UserButton />
           </div>
         ) : (
-          <Button>Get Started</Button>
+          <SignInButton>
+            <Button>Get Started</Button>
+          </SignInButton>
         )}
       </div>
     </div>
